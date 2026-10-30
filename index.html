@@ -7,9 +7,10 @@
     <title>DESIGN INDEX GALLERY</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
-    <style>.cover-wash{pointer-events:none}.cover-content{position:relative;z-index:1}.card-image{background:#e8e3db}.card-image img{object-fit:contain;padding:7px}.product-photo--cutout{mix-blend-mode:multiply}.dialog-image{background-size:contain!important;background-repeat:no-repeat!important;background-color:#e8e3db}.dialog-image[data-cutout="true"]{background-blend-mode:multiply}.card-price,.dialog-price{font:12px "DM Mono",monospace;letter-spacing:.03em;color:#7a5d47;margin:10px 0 0}.dialog-price{font-size:15px;margin:15px 0 21px;padding-bottom:12px;border-bottom:1px solid rgba(41,40,38,.22)}.card-contact{font:9px/1.65 "DM Mono",monospace;letter-spacing:.045em;color:#8a8781;margin:8px 0 0}.card-contact span{color:#292826}</style>
+    <link rel="stylesheet" href="dialog-description.css" />
+    <link rel="stylesheet" href="card-overrides.css" />
   </head>
   <body>
     <div class="grain" aria-hidden="true"></div>
@@ -19,20 +20,21 @@
       <nav class="nav" id="siteNav" aria-label="Навигация по каталогу">
         <a href="#about">О галерее</a>
         <a href="#catalogue">Коллекция</a>
-        <a href="#collaboration">Сотрудничество</a>
+        <a href="#collaboration">Сервис</a>
         <a href="#contacts">Контакты</a>
       </nav>
     </header>
 
     <main>
       <section class="cover" id="cover" aria-labelledby="cover-title">
-        <img class="cover-image" src="Композиция%20мебели%20с%20надписью%20DESIGN%20INDEX%20GALLERY.jpg" alt="Композиция предметов мебели и света" />
+        <img class="cover-image" src="assets/cover-composition.jpg" alt="Композиция предметов мебели и света" />
         <div class="cover-wash"></div>
         <div class="cover-content">
           <p class="eyebrow">Москва · 2026</p>
           <h1 id="cover-title">DESIGN<br />INDEX<br /><em>GALLERY</em></h1>
-          <p class="cover-intro">Галерея мебели, света, предметов декора и искусства российских авторов нового поколения.</p>
-          <a href="#about" class="round-link">Открыть каталог <i>↓</i></a>
+          <p class="cover-intro">Галерея мебели, света, предметов декора и искусства российских авторов нового поколения</p>
+          <a class="cover-address" href="https://yandex.ru/maps/?text=Москва%2C%20Большая%20Дорогомиловская%2C%207" target="_blank" rel="noopener">Б. Дорогомиловская, 7 <span>↗</span></a>
+          <a href="#catalogue" class="round-link">Открыть каталог <i>↓</i></a>
         </div>
         <p class="cover-index">01 / 06</p>
       </section>
@@ -45,7 +47,7 @@
           <p>Мы показываем вещи в диалоге с архитектурой — через форму, материал, масштаб и тишину вокруг них.</p>
         </div>
         <figure class="about-image">
-          <img src="Стена%20с%20архитектурными%20эскизами%20и%20консолью.jpg" alt="Консоль на фоне архитектурных эскизов" loading="lazy" />
+          <img src="assets/gallery-space.jpg" alt="Скульптуры в пространстве галереи" loading="lazy" />
           <figcaption>архив галереи / 01</figcaption>
         </figure>
       </section>
@@ -54,19 +56,18 @@
         <div class="catalogue-head">
           <div>
             <p class="eyebrow">03 / КОЛЛЕКЦИЯ</p>
-            <h2 id="catalogue-title">Отобранные<br /><em>объекты</em></h2>
+            <h2 id="catalogue-title">Объекты<br /><em>желания</em></h2>
           </div>
-          <p>26 предметов из актуального перечня резидентов. Выберите объект, чтобы увидеть сведения из исходного каталога.</p>
+          <p>Выберите объект, чтобы увидеть информацию о нём.</p>
         </div>
 
         <div class="filter-row" role="group" aria-label="Фильтр коллекции">
-          <button class="filter is-active" data-filter="all">Все <span>26</span></button>
-          <button class="filter" data-filter="furniture">Мебель <span>18</span></button>
-          <button class="filter" data-filter="art">Искусство <span>6</span></button>
-          <button class="filter" data-filter="light">Свет <span>2</span></button>
+          <button class="filter is-active" data-filter="all">Все <span></span></button>
+          <button class="filter" data-filter="furniture">Мебель <span></span></button>
+          <button class="filter" data-filter="art">Искусство <span></span></button>
+          <button class="filter" data-filter="light">Свет <span></span></button>
         </div>
         <div id="productGrid" class="product-grid" aria-live="polite"></div>
-        <a class="source-link" href="Резиденты_Design%20Index%20Gallery.pdf" target="_blank" rel="noopener">Смотреть исходный перечень резидентов <span>↗</span></a>
       </section>
 
       <section class="feature spread feature-dark">
@@ -75,26 +76,27 @@
         </div>
         <div class="feature-copy">
           <p class="eyebrow">04 / В ФОКУСЕ</p>
-          <blockquote>«Предмет существует не только в пространстве, но и во времени».</blockquote>
-          <p>Форма становится точкой тишины — самостоятельной, выразительной, открытой к интерпретации.</p>
+          <blockquote>Предмет с сильным характером и идеей</blockquote>
+          <p class="feature-lead">Галерея предметного и коллекционного дизайна.</p>
+          <ul class="feature-list"><li>Российский дизайн.</li><li>Галерея и концепт-стор.</li><li>80% — серийная авторская мебель.</li><li>20% — коллекционные предметы.</li><li>Кураторский отбор.</li></ul>
           <a href="#catalogue" class="text-link">Смотреть объекты <span>→</span></a>
         </div>
       </section>
 
       <section class="collaboration" id="collaboration" aria-labelledby="collaboration-title">
         <div class="collab-title">
-          <p class="eyebrow">05 / СОТРУДНИЧЕСТВО</p>
-          <h2 id="collaboration-title">Работаем<br />с теми, кто<br /><em>создаёт.</em></h2>
-          <p>Возможности для дизайнеров, архитекторов и партнёров.</p>
+          <p class="eyebrow">05 / СЕРВИС</p>
+          <h2 id="collaboration-title">Возможности для дизайнеров, архитекторов и партнёров</h2>
+          <p>Design Index Gallery становится местом встречи дизайнеров, архитекторов, коллекционеров и покупателей, которые ценят уникальные авторские объекты и готовы их приобретать.</p>
         </div>
         <ol class="services">
-          <li><span>01</span><div><h3>Декорирование и дизайн интерьеров</h3><p>Поддержка проектов в области предметного наполнения и оформления интерьеров.</p></div></li>
-          <li><span>02</span><div><h3>Арт- и дизайн-консалтинг</h3><p>Консультации по подбору предметов дизайна и искусства.</p></div></li>
-          <li><span>03</span><div><h3>Мероприятия и лекции</h3><p>Организация встреч, событий и лекций.</p></div></li>
-          <li><span>04</span><div><h3>Предоставление предметов</h3><p>Изделия для примерки в пространстве и проведения фотосессий.</p></div></li>
-          <li><span>05</span><div><h3>Ассортимент в наличии</h3><p>Возможность ознакомиться с доступными предметами коллекции.</p></div></li>
-          <li><span>06</span><div><h3>Публикации и продвижение</h3><p>Освещение дизайнеров и проектов в социальных сетях галереи.</p></div></li>
-          <li><span>07</span><div><h3>Персональный менеджер</h3><p>Сопровождение на протяжении сотрудничества.</p></div></li>
+          <li><span>01</span><div><h3>Ассортимент в наличии</h3><p>Возможность ознакомиться с доступными предметами коллекции.</p></div></li>
+          <li><span>02</span><div><h3>Предоставление предметов</h3><p>Изделия для примерки в пространстве и проведения фотосессий.</p></div></li>
+          <li><span>03</span><div><h3>Арт- и дизайн-консалтинг</h3><p>Консультации по подбору предметов дизайна и искусства.</p></div></li>
+          <li><span>04</span><div><h3>Персональный менеджер</h3><p>Сопровождение на протяжении сотрудничества.</p></div></li>
+          <li><span>05</span><div><h3>Декорирование</h3><p>Поддержка проектов в области предметного наполнения и оформления интерьеров.</p></div></li>
+          <li><span>06</span><div><h3>Мероприятия и лекции</h3><p>Организация встреч, событий и лекций.</p></div></li>
+          <li><span>07</span><div><h3>Публикации и продвижение</h3><p>Освещение дизайнеров и проектов в социальных сетях галереи.</p></div></li>
         </ol>
       </section>
 
@@ -103,15 +105,14 @@
         <div class="contact-overlay"></div>
         <div class="contact-content">
           <p class="eyebrow">06 / КОНТАКТЫ</p>
-          <h2 id="contacts-title">DESIGN INDEX<br /><em>GALLERY</em></h2>
-          <p class="contact-lead">Открыты к сотрудничеству.</p>
+          <h2 id="contacts-title"><span>DESIGN</span> <span>INDEX</span><br /><span>GALLERY</span></h2>
           <div class="contact-list">
-            <div><span>АДРЕС</span><a href="https://www.google.com/maps/search/?api=1&query=Москва,+Большая+Дорогомиловская,+7" target="_blank" rel="noopener">Б. Дорогомиловская, 7 <b>↗</b></a></div>
+            <div><span>АДРЕС</span><a href="https://yandex.ru/maps/?text=Москва%2C%20Большая%20Дорогомиловская%2C%207" target="_blank" rel="noopener">Б. Дорогомиловская, 7 <b>↗</b></a></div>
             <div><span>ТЕЛЕФОНЫ</span><a href="tel:+79119663674">+7 911 966 36 74</a><a href="tel:+79265270594">+7 926 527 05 94</a></div>
             <div><span>ПОЧТА</span><a href="mailto:info@designindexgallery.com">info@designindexgallery.com</a></div>
             <div><span>TELEGRAM</span><a href="https://t.me/designindexgallery" target="_blank" rel="noopener">@designindexgallery <b>↗</b></a></div>
           </div>
-          <a class="contact-cta" href="mailto:info@designindexgallery.com?subject=Запрос%20в%20DESIGN%20INDEX%20GALLERY">Связаться с галереей <span>→</span></a>
+          <a class="contact-cta" href="https://t.me/designindexgallery" target="_blank" rel="noopener">Связаться <span>→</span></a>
         </div>
       </section>
     </main>
@@ -124,11 +125,12 @@
         <h2 id="dialogName"></h2>
         <p id="dialogPrice" class="dialog-price"></p>
         <p id="dialogAuthor" class="dialog-author"></p>
-        <p id="dialogDescription"></p>
+        <div id="dialogDescription" class="dialog-description"></div>
         <dl id="dialogSpecs"></dl>
         <a href="mailto:info@designindexgallery.com?subject=Запрос%20о%20предмете" class="text-link">Узнать о наличии <span>→</span></a>
       </div>
     </dialog>
+    <script src="catalog-data.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

@@ -1,0 +1,5 @@
+.product-card--no-hover:hover,
+.product-card--no-hover:hover img {
+  opacity: 1;
+  transform: none;
+}
