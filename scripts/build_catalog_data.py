@@ -286,6 +286,7 @@ loss.update(name='Стол ЛОСС, серия «Дюна»', specs='400 × 400
 for product in products:
     product['name'] = renamed_objects.get(product['name'], product['name'])
 products.insert(loss_index + 1, loss)
+products = [product for product in products if product['name'] != 'Стол Х (Икс)']
 
 with open(TARGET, 'w', encoding='utf-8') as output:
     output.write('/* Generated from Каталог.xlsx. Do not edit manually. */\n')
