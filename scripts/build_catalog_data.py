@@ -229,6 +229,64 @@ with zipfile.ZipFile(SOURCE) as archive:
             'scene': row_number in SCENE_ROWS
         })
 
+elenium = [product for product in products if product['resident'].casefold() == 'elenium']
+products = [product for product in products if product['resident'].casefold() != 'elenium']
+insert_at = max(i for i, product in enumerate(products) if product['resident'].casefold() == 'ceramum') + 1
+products[insert_at:insert_at] = elenium
+for product in products:
+    if product['name'] == 'Торшер Triangle':
+        product['description'] = 'Торшер представляет собой сосредоточенную в верхней точке композицию, выполненную из полированной нержавеющей стали и матовых рассеивающих полусфер. Управление верхним и нижним светом разработано независимо друг от друга, для более контекстной настройки сценариев в пространстве. Верхний — мягко заполняет интерьер, нижний — деликатно освещает в ночное время. Сдержанный внешний вид позволяет предмету интегрироваться в самые разные интерьеры.'
+        product['specs'] = 'Высота: 1600 мм; ширина: 330 мм; глубина: 330 мм'
+    if product['name'] == 'Столик «Неокуб»':
+        product['photo'] = 'assets/neocube.jpg'
+        product['scene'] = True
+
+import unicodedata
+named_photos = {
+    'Напольная лампа Light Catcher («Ловец света»)': 'апольная лампа Light Catcher («Ловец света»).png',
+    'Журнальный стол «Грань / Edge»': 'Журнальный стол «Грань : Edge».png',
+    'Кресло «Нео / Neo»': 'Кресло «Нео .png',
+    'Кресло «Фило / Filo»': 'Кресло «Фило .jpg',
+    'Стол кофейный Z/H Maya': 'Стол кофейный Z:H Maya.png',
+    'Панно «Озеро»': 'панно озеро.jpg',
+}
+files = {unicodedata.normalize('NFC', p.name): p for p in Path('картинки 2').iterdir()}
+replaced = 0
+for index, product in enumerate(products):
+    expected = named_photos.get(product['name'])
+    candidates = [expected] if expected else [product['name'] + ext for ext in ('.png', '.jpg')]
+    for candidate in candidates:
+        source_photo = files.get(unicodedata.normalize('NFC', candidate))
+        if source_photo:
+            destination = WEB_ASSETS / f'named-{index:02d}{source_photo.suffix.lower()}'
+            copy2(source_photo, destination)
+            product['photo'] = destination.as_posix()
+            product['scene'] = source_photo.suffix.lower() == '.jpg' or 'Нео' in product['name']
+            replaced += 1
+            break
+lake = next(product for product in products if product['name'] == 'Панно «Озеро»')
+lamp = next(product for product in products if product['name'] == 'Светильник «Банка»')
+lake['photo'], lamp['photo'] = lamp['photo'], lake['photo']
+lake['scene'], lamp['scene'] = lamp['scene'], lake['scene']
+print(f'Updated {replaced} named photos')
+
+renamed_objects = {
+    'Картина «Театр. Сцена»': 'Проект Балет. Картина «Театр. Сцена»',
+    'Кресло Roll': 'Кресло «Roll»',
+    'Столик Martin': 'Столик «Martin»',
+    'Журнальный стол «Грань / Edge»': 'Журнальный стол «Грань/Adje»',
+    'Стол ЛОСС, серия «Дюна»': 'Стол Х (Икс)',
+    'Объёмное панно по эскизу Сони Делоне': 'Объемное панно по эскизу В. Степановой',
+    'Объёмное панно по эскизу В. Степановой': 'Объемное панно по эскизу Сони Делоне',
+    'Кресло Bubble': 'Кресло «Bubble»',
+}
+loss_index = next(i for i, p in enumerate(products) if p['name'] == 'Стол ЛОСС, серия «Дюна»')
+loss = dict(products[loss_index])
+loss.update(name='Стол ЛОСС, серия «Дюна»', specs='400 × 400 × 580 мм', photo='assets/loss-dune.png', type='furniture', scene=False)
+for product in products:
+    product['name'] = renamed_objects.get(product['name'], product['name'])
+products.insert(loss_index + 1, loss)
+
 with open(TARGET, 'w', encoding='utf-8') as output:
     output.write('/* Generated from Каталог.xlsx. Do not edit manually. */\n')
     output.write('window.catalogProducts = ')

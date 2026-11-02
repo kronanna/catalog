@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="dialog-description.css" />
-    <link rel="stylesheet" href="card-overrides.css" />
+    <link rel="stylesheet" href="card-overrides.css?v=20261102-9" />
   </head>
   <body>
     <div class="grain" aria-hidden="true"></div>
@@ -27,13 +27,13 @@
 
     <main>
       <section class="cover" id="cover" aria-labelledby="cover-title">
-        <img class="cover-image" src="assets/cover-composition.jpg" alt="Композиция предметов мебели и света" />
+        <img class="cover-image" src="assets/about-november.jpg" alt="Скульптуры в галерее" />
         <div class="cover-wash"></div>
         <div class="cover-content">
           <p class="eyebrow">Москва · 2026</p>
           <h1 id="cover-title">DESIGN<br />INDEX<br /><em>GALLERY</em></h1>
           <p class="cover-intro">Галерея мебели, света, предметов декора и искусства российских авторов нового поколения</p>
-          <a class="cover-address" href="https://yandex.ru/maps/?text=Москва%2C%20Большая%20Дорогомиловская%2C%207" target="_blank" rel="noopener">Б. Дорогомиловская, 7 <span>↗</span></a>
+          <a class="cover-address" href="https://yandex.ru/maps/org/design_index_gallery/197369772199/?ll=37.557250%2C55.746063&amp;z=17" target="_blank" rel="noopener">Б. Дорогомиловская, 7 <span>↗</span></a>
           <a href="#catalogue" class="round-link">Открыть каталог <i>↓</i></a>
         </div>
         <p class="cover-index">01 / 06</p>
@@ -44,10 +44,9 @@
         <div class="about-copy">
           <h2 id="about-title">Предметы,<br /><em>формирующие</em><br />пространство.</h2>
           <p>DESIGN INDEX GALLERY объединяет предметный дизайн, авторские объекты и современную визуальную культуру.</p>
-          <p>Мы показываем вещи в диалоге с архитектурой — через форму, материал, масштаб и тишину вокруг них.</p>
         </div>
         <figure class="about-image">
-          <img src="assets/gallery-space.jpg" alt="Скульптуры в пространстве галереи" loading="lazy" />
+          <img src="assets/cover-november.jpg" alt="Авторская мебель и искусство в интерьере" loading="lazy" />
           <figcaption>архив галереи / 01</figcaption>
         </figure>
       </section>
@@ -107,12 +106,13 @@
           <p class="eyebrow">06 / КОНТАКТЫ</p>
           <h2 id="contacts-title"><span>DESIGN</span> <span>INDEX</span><br /><span>GALLERY</span></h2>
           <div class="contact-list">
-            <div><span>АДРЕС</span><a href="https://yandex.ru/maps/?text=Москва%2C%20Большая%20Дорогомиловская%2C%207" target="_blank" rel="noopener">Б. Дорогомиловская, 7 <b>↗</b></a></div>
+            <div><span>АДРЕС</span><a href="https://yandex.ru/maps/org/design_index_gallery/197369772199/?ll=37.557250%2C55.746063&amp;z=17" target="_blank" rel="noopener">Б. Дорогомиловская, 7 <b>↗</b></a></div>
             <div><span>ТЕЛЕФОНЫ</span><a href="tel:+79119663674">+7 911 966 36 74</a><a href="tel:+79265270594">+7 926 527 05 94</a></div>
             <div><span>ПОЧТА</span><a href="mailto:info@designindexgallery.com">info@designindexgallery.com</a></div>
-            <div><span>TELEGRAM</span><a href="https://t.me/designindexgallery" target="_blank" rel="noopener">@designindexgallery <b>↗</b></a></div>
+            <div><span>Наш канал в Telegram</span><a href="https://t.me/designindexgallery" target="_blank" rel="noopener">@designindexgallery <b>↗</b></a></div>
+            <div class="personal-contacts"><span>TELEGRAM</span><a href="https://t.me/lorrrilo" target="_blank" rel="noopener">Лора Ненашева @lorrrilo</a><a href="https://t.me/ElenaKhryashcheva" target="_blank" rel="noopener">Елена Хрящева @ElenaKhryashcheva</a></div>
           </div>
-          <a class="contact-cta" href="https://t.me/designindexgallery" target="_blank" rel="noopener">Связаться <span>→</span></a>
+          <a class="contact-cta" href="https://t.me/ElenaKhryashcheva" target="_blank" rel="noopener">Связаться <span>→</span></a>
         </div>
       </section>
     </main>
@@ -127,10 +127,10 @@
         <p id="dialogAuthor" class="dialog-author"></p>
         <div id="dialogDescription" class="dialog-description"></div>
         <dl id="dialogSpecs"></dl>
-        <a href="mailto:info@designindexgallery.com?subject=Запрос%20о%20предмете" class="text-link">Узнать о наличии <span>→</span></a>
+        <a href="#contacts" id="availabilityLink" class="text-link">Узнать о наличии <span>→</span></a>
       </div>
     </dialog>
-    <script src="catalog-data.js"></script>
-    <script src="app.js"></script>
+    <script src="catalog-data.js?v=20261102-9"></script>
+    <script src="app.js?v=20261102-9"></script>
   </body>
 </html>

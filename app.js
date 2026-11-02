@@ -96,6 +96,8 @@ function openProduct(product) {
   dialogIndex.textContent = `${String(index).padStart(2, '0')} / ${labels[product.type].toLowerCase()}`;
   dialogSpecs.replaceChildren(makeSpec('Характеристики', product.specs), makeSpec('Резидент', product.resident));
   dialog.showModal();
+  dialog.scrollTop = 0;
+  dialogImage.scrollTop = 0;
 }
 
 updateFilterCounts();
@@ -106,6 +108,18 @@ document.querySelectorAll('.filter').forEach((button) => button.addEventListener
   showProducts(button.dataset.filter);
 }));
 document.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
+document.querySelector('#availabilityLink').addEventListener('click', () => {
+  dialog.close();
+  const telegram = document.querySelector('.personal-contacts');
+  telegram.classList.remove('is-highlighted');
+  requestAnimationFrame(() => {
+    document.querySelector('#contacts').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    telegram.classList.add('is-highlighted');
+    telegram.querySelector('a').focus({ preventScroll: true });
+  });
+  window.clearTimeout(window.telegramHighlightTimer);
+  window.telegramHighlightTimer = window.setTimeout(() => telegram.classList.remove('is-highlighted'), 7000);
+});
 dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
 const menuTrigger = document.querySelector('#menuTrigger');
 const nav = document.querySelector('#siteNav');
