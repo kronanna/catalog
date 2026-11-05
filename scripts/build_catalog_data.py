@@ -288,6 +288,40 @@ for product in products:
 products.insert(loss_index + 1, loss)
 products = [product for product in products if product['name'] != 'Стол Х (Икс)']
 
+for product in products:
+    if product['name'] == 'Ваза «Сад камней / Crust»':
+        product['photo'] = 'assets/stone-garden-1.jpg'
+        product['photos'] = ['assets/stone-garden-1.jpg', 'assets/stone-garden-2.jpg']
+        product['scene'] = True
+    if product['name'] == 'Ваза «Сад камней / Strata»':
+        product['photo'] = 'assets/stone-garden-strata.jpg'
+        product['scene'] = True
+
+bubble_index = next(i for i, product in enumerate(products) if product['name'] == 'Кресло «Bubble»')
+products.insert(bubble_index + 1, {
+    'name': 'Кресло «Bubble»',
+    'resident': products[bubble_index]['resident'],
+    'type': 'furniture',
+    'specs': 'Шерсть ламы, эпоксидная смола.',
+    'description': 'Мягкие белые подушки на розовой опоре вызывают ассоциацию с чем-то воздушным, легким, словно пузырь жевательной резинки с тонким ягодным вкусом. Дизайн кресла максимально лаконичен, без лишних элементов. Здесь нет объемных подлокотников и массивных ножек. Эргономичное, компактное, с удобным углом наклона спинки, это кресло создано для комфорта и релаксации.\n\nВнешне невесомое кресло похоже на облако, визуально делающее пространство более светлым и лёгким.\n\nЭто предмет мебели, который акцентирует на себе внимание в интерьере и подойдет креативным и молодым душой мечтателям. Тем, кто умеет широко мыслить и обладает внутренней свободой.',
+    'price': '985 000 ₽',
+    'photo': 'assets/bubble-llama.jpg',
+    'scene': True,
+})
+
+for product in products:
+    if product['name'] == 'Журнальные столики «Радуга / Rainbow»':
+        product.update(
+            name='Журнальные столики «Призма / Prisma»',
+            photo='assets/prisma-tables.jpg', scene=True,
+            price='88 000–98 000 ₽',
+            specs='400 × 400 × 400 мм; 500 × 500 × 500 мм',
+            variants=[
+                {'size': '400 × 400 × 400 мм', 'price': '88 000 ₽'},
+                {'size': '500 × 500 × 500 мм', 'price': '98 000 ₽'},
+            ],
+        )
+
 with open(TARGET, 'w', encoding='utf-8') as output:
     output.write('/* Generated from Каталог.xlsx. Do not edit manually. */\n')
     output.write('window.catalogProducts = ')

@@ -16,6 +16,13 @@ h1, h2, h3, h1 em, h2 em, blockquote, .card-name { font-family: var(--sans) !imp
 .product-card:hover img { transform: none; }
 .dialog-image, .dialog-image[data-cutout="true"] { background-size: contain; background-color: #fff; background-blend-mode: normal; }
 .telegram-icon { display: none !important; }
+.contact-list .manager-number { font: inherit; letter-spacing: inherit; padding: 3px 5px; margin-left: -5px; border-radius: 3px; transition: background-color .3s, color .3s; }
+#managerPhone.is-highlighted .manager-number { color: #19789f; background: #edf7fc; }
+.contact-phones a { line-height: 1.65; overflow-wrap: anywhere; }
+.dialog-gallery-photo { display: block; width: 100%; height: 100%; object-fit: contain; padding: 12px 12px 56px; }
+.gallery-controls { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 18px; background: #fff; padding: 5px 8px; border-radius: 30px; white-space: nowrap; }
+.gallery-controls button { width: 36px; height: 36px; border: 1px solid #ddd; border-radius: 50%; background: #fff; color: #292826; font: 18px var(--sans); cursor: pointer; }
+.gallery-controls span { font-size: 12px; }
 .product-dialog { max-height: calc(100dvh - 32px); }
 .product-dialog[open] { align-items: start; }
 .product-dialog .dialog-image {
