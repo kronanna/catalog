@@ -322,6 +322,15 @@ for product in products:
             ],
         )
 
+price_updates = {
+    'Компактное кресло X (Икс)': '150 000 ₽',
+    'Стол X (Икс)': '150 000 ₽',
+    'Панно «Марсала»': '620 000 ₽',
+}
+for product in products:
+    if product['name'] in price_updates:
+        product['price'] = price_updates[product['name']]
+
 with open(TARGET, 'w', encoding='utf-8') as output:
     output.write('/* Generated from Каталог.xlsx. Do not edit manually. */\n')
     output.write('window.catalogProducts = ')
